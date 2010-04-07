@@ -1,4 +1,5 @@
 class Attaching < ActiveRecord::Base
+  acts_as_list :scope => proc{['attachable_id = ? AND attachable_type = ?', attachable_id, attachable_type]}
   belongs_to :asset, :counter_cache => true
   belongs_to :attachable, :polymorphic => true
   
